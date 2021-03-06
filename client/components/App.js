@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import LandingPage from '/LandingPage.js';
+import LandingPage from './LandingPage.js';
+import SignUpPage from './SignUpPage.js';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        {/* <Switch>
+        <Switch>
           <Route path="/signup">
-            <div>You've reached the sign up page</div>
+            <SignUpPage />
           </Route>
 
           <Route path="/">
             <LandingPage />
           </Route>
-        </Switch> */}
+        </Switch>
       </div>
     )
   }

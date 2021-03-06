@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
 
-class LandingPage extends Component {
+class SignUpPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,14 +15,12 @@ class LandingPage extends Component {
   formChange(event) {
     const target = event.target;
     this.setState({ [target.name]: target.value });
-    console.log('Form submitted\n', `username: ${this.state.username}, password: ${this.state.password}`);
   }
 
   formSubmit(event) {
-    event.preventDefault();
     console.log('Form submitted\n', `username: ${this.state.username}, password: ${this.state.password}`);
 
-    fetch('/login', {
+    fetch('/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -42,11 +39,8 @@ class LandingPage extends Component {
         <form onSubmit={this.formSubmit}>
           <input name="username" type="text" value={this.state.username} onChange={this.formChange} placeholder="Username" />
           <input name="password" type="password" value={this.state.password} onChange={this.formChange} placeholder="Password" />
-          <input type="submit" value="Log In" />
+          <input type="submit" value="Sign Up" />
         </form>
-        <Link to="/signup">
-          <button>Sign Up</button>
-        </Link>
       </div>
     )
   }
@@ -54,4 +48,4 @@ class LandingPage extends Component {
 
 }
 
-export default LandingPage;
+export default SignUpPage;
