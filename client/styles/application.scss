@@ -2,8 +2,15 @@
     // border: 2px solid green;
 }
 
+#feed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .feedBubble {
     border: 2px solid green;
     margin-top: 10px;
     padding: 10px;
+    width: 50%;
 }

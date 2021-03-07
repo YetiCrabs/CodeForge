@@ -12,7 +12,15 @@ export default class App extends Component {
 
   componentDidMount() {
     console.log('App mounted')
+    
+    fetch('/users')
+    .then(response => response.json())
+    .then(users => {
+      this.setState({...this.state, activeUsers: users.filter(user => user.status), inactiveUsers: users.filter(user => !user.status)});
+      console.log(this.state);
+    })
   }
+
   render() {
     return (
       <div>
