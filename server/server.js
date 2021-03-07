@@ -18,9 +18,23 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 
 app.use('/users', userRouter);
 
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+app.get('/home', (req, res) => {
+  console.log('hit /home route');
+  // res.set('Content-Type', 'text/html; charset=UTF-8');
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
+});
+
+app.post('/login', (req, res) => {
+  console.log('hit login post route');
+  // res.set('Content-Type', 'text/html; charset=UTF-8');
+  res.redirect('/home');
+});
+
+app.get('/', (req, res) => res.status(200).sendFile(path.join(__dirname, '../index.html')));
 
 /**
  * 404 handler

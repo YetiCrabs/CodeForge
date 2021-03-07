@@ -36,9 +36,9 @@ projectController.addUser = (req, res, next) => {
         message: { err: 'failed to add user to database' },
       });
     }
-    res.locals.newUser = result;
-    return next();
+    res.locals.newUser = result.rows[0];
   });
+  return next();
 };
 
 projectController.getUser = (req, res, next) => {
