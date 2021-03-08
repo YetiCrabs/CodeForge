@@ -1,5 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
 #root {
-    // border: 2px solid green;
+    margin: 0px;
+    font-family: Nunito;
+    color: rgb(46, 46, 46);
+}
+
+.stylingV1Test {
+
+}
+
+.navBarInactive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    background-color:rgb(204, 204, 204);
+    height: 60px;
+}
+
+.navBarActive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    background-color:rgb(101, 187, 120);
+    height: 60px;
+}
+
+#input {
+    font-size: 16px;;
+    width: 350px;
+    height: 36px;
+    margin: 20px;
+    border-radius: 30px;
+    border: solid 1px;
+    padding: 0px 15px;
+    outline: none;
+}
+
+.title {
+    margin-top: 40px;
+    font-size: 42px;
+    color: rgb(177, 177, 177);
 }
 
 .stylingV2Test {
@@ -23,16 +66,80 @@
 
 .feedBubble {
     border: 2px solid green;
-    margin-top: 10px;
-    padding: 10px;
+    margin: 9px;
+    padding: 5px 18px;
+    border-radius: 17px;
+    line-height: 8px;
 }
 
 #offline {
-    margin-top: 50px ;
-    padding: 10px;
+    border-radius: 17px;
+    padding: 20px 35px;
     line-height: 10px;
     color: rgb(128, 128, 128);
     border: solid rgb(128, 128, 128);
     font-size: 16px;
-    width: 50%;
+    width: 40%;
 }
+
+// toggle switch stuff
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 26px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(126, 126, 126);
+    -webkit-transition: .6s;
+    transition: .6s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 2px;
+    background-color: rgb(214, 214, 214);
+    -webkit-transition: .6s;
+    transition: .6s;
+  }
+
+  input:checked + .slider {
+    background-color: rgb(66, 133, 81);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #707070;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(23px);
+    -ms-transform: translateX(23px);
+    transform: translateX(23px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 26px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
