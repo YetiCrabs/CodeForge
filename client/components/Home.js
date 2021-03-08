@@ -11,7 +11,7 @@ class Home extends Component {
       inactiveUsers: [],
 
     };
-    
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -28,7 +28,7 @@ class Home extends Component {
       })
   }
 
-  handleClick(){
+  handleClick() {
     alert('username to joe button clicked');
     this.props.setCurrentUser("Joe");
   }
@@ -43,7 +43,7 @@ class Home extends Component {
             user={this.state.activeUsers[i].username}
             status={this.state.activeUsers[i].status_message}
           />);
-      }
+      } 
     }
 
 
@@ -62,7 +62,7 @@ class Home extends Component {
 
     return (
       <div>
-      <div>Username from local storage: {localStorage.username}</div>
+        <div>Username from local storage: {localStorage.username}</div>
         <NavBar
           text={"hello world!"}
           currentUserStatus={this.props.currentUserStatus}
@@ -71,15 +71,15 @@ class Home extends Component {
           currentUsername={this.props.currentUsername}
         />
 
-        <div class="homepage">
+        <div className="homepage">
           <div id="feed">
             {bubbles}
           </div>
           <div id="offline">
             {offline}
           </div>
+        </div>
 
-        
       </div>
     )
   }
