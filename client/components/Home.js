@@ -13,6 +13,7 @@ class Home extends Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    // this.changeStyle = this.changeStyle.bind(this);
   }
 
 
@@ -50,19 +51,30 @@ class Home extends Component {
     const offline = [];
     if (this.state.inactiveUsers.length) {
       for (let i = 0; i < this.state.inactiveUsers.length; i++) {
-        offline.push(
-          <OfflineBubble
-            key={`user${i}`}
-            user={this.state.inactiveUsers[i].username}
-            status={this.state.inactiveUsers[i].status_message}
-          />);
+        if (i === this.state.inactiveUsers.length - 1) {
+          offline.push(
+            <OfflineBubble
+              key={`inactive-user${i}`}
+              user={this.state.inactiveUsers[i].username}
+              status={this.state.inactiveUsers[i].status_message}
+            />);
+        } else {
+          offline.push(
+            <OfflineBubble
+              key={`inactive-user${i}`}
+              user={this.state.inactiveUsers[i].username}
+              status={this.state.inactiveUsers[i].status_message}
+            />, <hr/>);
+        }
       }
     }
 
 
     return (
       <div>
-        <div>Username from local storage: {localStorage.username}</div>
+
+      {/* <div>Username from local storage: {localStorage.username}</div> */}
+
         <NavBar
           text={"hello world!"}
           currentUserStatus={this.props.currentUserStatus}
@@ -72,13 +84,18 @@ class Home extends Component {
         />
 
         <div className="homepage">
+
+          <h1 className="title">Active</h1>
+
           <div id="feed">
             {bubbles}
           </div>
+          <h1 className="title">Offline</h1>
           <div id="offline">
             {offline}
           </div>
 
+        </div>
 
       </div>
     </div>

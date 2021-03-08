@@ -12,7 +12,11 @@ class NavBar extends Component {
     // console.log('before changing status', this.props.currentUserStatus)
     event.preventDefault();
     // console.log('Status submitted\n', `message: ${event.target[0].value}`, `username: ${localStorage.username}`, `user status: ${this.props.currentUserStatus}`);
-    // console.log(`status message will be set to ${event.target[0].value}`);
+
+    console.log(`status message will be set to ${event.target[0].value}`);
+
+    document.getElementById("navbar").classList.toggle("navBarActive"); //changing styling on button click
+
     fetch(`/users/${document.cookie.split('=')[1]}`, {
       method: 'PATCH',
       headers: {
@@ -73,19 +77,21 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className="navBar">
-        <form onSubmit={this.statusSubmit}>
-          <input name="status" type="text" placeholder="What are you working on?" />
-          <button onClick={this.props.ToggleButtonFunc}>Toggle</button>
-        </form>
-        <div>
-          {/* <button onClick={this.props.ToggleButtonFunc}>Toggle</button>
-          <br></br>
-          {this.props.text}
-          <br></br>
-          This user's username is {this.props.currentUsername} 
-          <br></br> */}
-          This user is {this.props.currentUserStatus ? "active" : "inactive"}
+
+      <div id="navbar" className="navBarInactive navBarActive">
+        <div className="navBar">
+          <form onSubmit={this.statusSubmit}>
+            <input id="input" name="status" type="text" placeholder="What are you working on?"/>
+            <button onClick={this.props.ToggleButtonFunc}>Toggle</button>
+            {/* <label className="switch">
+              <input type="checkbox" onChange={this.statusSubmit}/>
+              <span className="slider round"></span>
+            </label> */}
+          </form>
+          {/* <div>
+            This user is {this.props.currentUserStatus ? "active" : "inactive"}
+          </div> */}
+
         </div>
         <form onSubmit={this.deleteUser}>
           <input name="delete" type="submit" value="Delete my Account" />
