@@ -78,6 +78,7 @@ class Home extends Component {
           <div id="offline">
             {offline}
           </div>
+          </div>
 
         
       </div>
