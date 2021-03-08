@@ -2,15 +2,37 @@
     // border: 2px solid green;
 }
 
+.stylingV2Test {
+    color: green;
+    background: rgb(0, 0, 70);
+}
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #feed {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 50%;
 }
 
 .feedBubble {
     border: 2px solid green;
     margin-top: 10px;
     padding: 10px;
+}
+
+#offline {
+    margin-top: 50px ;
+    padding: 10px;
+    line-height: 10px;
+    color: rgb(128, 128, 128);
+    border: solid rgb(128, 128, 128);
+    font-size: 16px;
     width: 50%;
 }

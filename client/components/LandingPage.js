@@ -39,6 +39,10 @@ class LandingPage extends Component {
     
   }
 
+  changeStyle() {
+    document.getElementById("root").classList.toggle("stylingV2Test");
+  }
+
   render() {
     return (
       <div>
@@ -53,6 +57,7 @@ class LandingPage extends Component {
         <Link to="/home">
           <button>Home</button>
         </Link>
+        <button onClick={this.changeStyle}>Change Colors</button>
       </div>
     )
   }
