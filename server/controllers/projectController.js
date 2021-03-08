@@ -65,6 +65,7 @@ projectController.getUser = (req, res, next) => {
 };
 
 projectController.updateUser = (req, res, next) => {
+  console.log('Update user request body\n', req.body);
   const updatedObject = { ...res.locals.user, ...req.body };
 
   const userValues = [

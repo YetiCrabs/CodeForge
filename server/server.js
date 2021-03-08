@@ -35,7 +35,7 @@ app.post('/login',
   cookieController.setSSIDCookie,
   (req, res) => {
     console.log('hit login post route');
-    console.log(res.locals.userId)
+    // console.log(res.locals.userId)
     // res.set('Content-Type', 'text/html; charset=UTF-8');
     res.redirect('/home');
 });
