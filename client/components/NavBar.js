@@ -8,18 +8,19 @@ class NavBar extends Component {
   }
 
   statusSubmit(event) {
+    // console.log('before changing status', this.props.currentUserStatus)
     event.preventDefault();
-    console.log('Status submitted\n', `message: ${event.target[0].value}`, `username: ${localStorage.username}`, `user status: ${this.props.currentUserStatus}`);
-    //target[0].value
-    fetch(`/users/${document.cookie.ssid}`, {
+    // console.log('Status submitted\n', `message: ${event.target[0].value}`, `username: ${localStorage.username}`, `user status: ${this.props.currentUserStatus}`);
+    // console.log(`status message will be set to ${event.target[0].value}`);
+    fetch(`/users/${document.cookie.split('=')[1]}`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        statusMessage: event.target[0].value,
-        status: !this.props.currentUserStatus
+        status_message: event.target[0].value,
+        status: this.props.currentUserStatus
       })
     })
 

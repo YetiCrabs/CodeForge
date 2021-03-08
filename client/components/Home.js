@@ -8,7 +8,6 @@ class Home extends Component {
     this.state = {
       activeUsers: [],
       inactiveUsers: [],
-      
     };
     
     this.handleClick = this.handleClick.bind(this);
