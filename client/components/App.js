@@ -9,7 +9,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       currentUsername: 'Username has not been set yet...',
-      currentUserStatus: "inactive",
+      currentUserStatus: false,
       currentUserStatusMessage: "",
     };
 
@@ -20,17 +20,20 @@ export default class App extends Component {
 
   ToggleButtonFunc() {
     let status;
-    if (this.state.currentUserStatus === "inactive") {
-      status = "active";
+    if (!this.state.currentUserStatus) {
+      status = true;
     } else {
-      status = "inactive";
+      status = false;
     }
     this.setState({ ...this.state, currentUserStatus: status });
   }
 
   setCurrentUser(input) {
-    alert(input);
+    // alert(this.state.currentUsername);
+    // alert(input);
     this.setState({ ...this.state, currentUsername: input });
+    // alert(this.state.currentUsername);
+    localStorage.setItem('username', input);
   }
 
   componentDidMount() {
@@ -52,6 +55,7 @@ export default class App extends Component {
               currentUserStatus={this.state.currentUserStatus}
               currentUserStatusMessage={this.state.currentUserStatusMessage}
               currentUsername={this.state.currentUsername}
+              setCurrentUser={this.setCurrentUser}
             />
           </Route>
 

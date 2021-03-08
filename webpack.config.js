@@ -8,6 +8,7 @@ module.exports = {
       '/': 'http://localhost:3000',
       '/signup': 'http://localhost:3000',
       '/users': 'http://localhost:3000/users',
+      '/login': 'http://localhost:3000/login',
     },
   },
   output: {
