@@ -29,7 +29,7 @@ class Home extends Component {
       })
   }
 
-  handleClick(){
+  handleClick() {
     alert('username to joe button clicked');
     this.props.setCurrentUser("Joe");
   }
@@ -44,7 +44,7 @@ class Home extends Component {
             user={this.state.activeUsers[i].username}
             status={this.state.activeUsers[i].status_message}
           />);
-      }
+      } 
     }
 
 
@@ -72,7 +72,9 @@ class Home extends Component {
 
     return (
       <div>
+
       {/* <div>Username from local storage: {localStorage.username}</div> */}
+
         <NavBar
           text={"hello world!"}
           currentUserStatus={this.props.currentUserStatus}
@@ -82,7 +84,9 @@ class Home extends Component {
         />
 
         <div className="homepage">
+
           <h1 className="title">Active</h1>
+
           <div id="feed">
             {bubbles}
           </div>
@@ -90,7 +94,9 @@ class Home extends Component {
           <div id="offline">
             {offline}
           </div>
+
         </div>
+
       </div>
     )
   }
