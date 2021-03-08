@@ -4,6 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 const userRouter = require('./routes/users');
+const userController = require('./controllers/userController');
+const cookieController = require('./controllers/cookieController.js')
 
 /**
  * handle parsing request body
@@ -28,10 +30,14 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-app.post('/login', (req, res) => {
-  console.log('hit login post route');
-  // res.set('Content-Type', 'text/html; charset=UTF-8');
-  res.redirect('/home');
+app.post('/login', 
+  userController.verifyUser, 
+  cookieController.setSSIDCookie,
+  (req, res) => {
+    console.log('hit login post route');
+    console.log(res.locals.userId)
+    // res.set('Content-Type', 'text/html; charset=UTF-8');
+    res.redirect('/home');
 });
 
 app.get('/', (req, res) => res.status(200).sendFile(path.join(__dirname, '../index.html')));
