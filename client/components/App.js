@@ -43,7 +43,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-      <div>Username: {this.state.currentUsername}</div>
+      {/* <div>Username: {this.state.currentUsername}</div> */}
         <Switch>
           <Route path="/signup">
             <SignUpPage setCurrentUser={this.setCurrentUser} />
