@@ -26,11 +26,15 @@ export default class App extends Component {
       status = "inactive";
     }
     this.setState({ ...this.state, currentUserStatus: status });
+    localStorage.setItem('userStatus', status)
   }
 
   setCurrentUser(input) {
+    alert(this.state.currentUsername);
     alert(input);
     this.setState({ ...this.state, currentUsername: input });
+    alert(this.state.currentUsername);
+    localStorage.setItem('username', input);
   }
 
   componentDidMount() {
@@ -52,6 +56,7 @@ export default class App extends Component {
               currentUserStatus={this.state.currentUserStatus}
               currentUserStatusMessage={this.state.currentUserStatusMessage}
               currentUsername={this.state.currentUsername}
+              setCurrentUser={this.setCurrentUser}
             />
           </Route>
 

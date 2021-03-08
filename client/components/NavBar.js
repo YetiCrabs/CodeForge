@@ -5,11 +5,19 @@ class NavBar extends Component {
     super(props);
   }
 
+  statusSubmit() {
+
+  }
+
   render() {
     return (
       <div className="navBar">
-        This is a div for the navbar!!!
-        <div>
+        This is a div for the navbar!!! 
+        <form onSubmit={this.statusSubmit}>
+          <input name="status" type="text" value={this.props.currentUserStatusMessage} placeholder="What are you working on?"/>
+          <button onClick={this.props.ToggleButtonFunc}>Toggle</button>
+        </form>
+        {/* <div>
           <button onClick={this.props.ToggleButtonFunc}>Toggle</button>
           <br></br>
           {this.props.text}
@@ -17,7 +25,7 @@ class NavBar extends Component {
           This user's username is {this.props.currentUsername} 
           <br></br>
           This user is {this.props.currentUserStatus}
-        </div>
+        </div> */}
       </div>
     )
   }

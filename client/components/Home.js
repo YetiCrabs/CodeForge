@@ -10,20 +10,26 @@ class Home extends Component {
       inactiveUsers: [],
       
     };
-
+    
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
 
   componentDidMount() {
     console.log('Home page did mount')
-
+    console.log('Home Page Current username state from app', this.props.currentUsername)
     fetch('/users')
       .then(response => response.json())
       .then(users => {
         this.setState({ ...this.state, activeUsers: users.filter(user => user.status), inactiveUsers: users.filter(user => !user.status) });
         console.log(this.state);
       })
+  }
+
+  handleClick(){
+    alert('username to joe button clicked');
+    this.props.setCurrentUser("Joe");
   }
 
   render() {
@@ -39,8 +45,11 @@ class Home extends Component {
       }
     }
 
+ 
+
     return (
       <div>
+      <div>Username from local storage: {localStorage.username}</div>
         <NavBar
           text={"hello world!"}
           currentUserStatus={this.props.currentUserStatus}
@@ -48,6 +57,7 @@ class Home extends Component {
           ToggleButtonFunc={this.props.ToggleButtonFunc}
           currentUsername={this.props.currentUsername}
         />
+        <button onClick={this.handleClick}>This button changes username to Joe</button>
         <div id="feed">
           {bubbles}
         </div>
