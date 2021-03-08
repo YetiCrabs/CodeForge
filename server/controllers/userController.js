@@ -27,6 +27,7 @@ userController.verifyUser = (req, res, next) => {
       log: 'no user',
     });
     }
+    if (result.rows.length === 0) res.redirect('/home');
     res.locals.userId = result.rows[0]._id;
     return next();
   });
