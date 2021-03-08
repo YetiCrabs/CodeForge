@@ -32,7 +32,9 @@ class LandingPage extends Component {
       })
     })
     .then(response => {
-      window.location.href = response.url
+      alert('try to pass in Joe');
+      this.props.setCurrentUser("Joe"); // fix this to pull actual username
+      window.location.href = response.url;
     })
     
   }

@@ -18,6 +18,7 @@ class SignUpPage extends Component {
   }
 
   formSubmit(event) {
+    event.preventDefault();
     console.log('Form submitted\n', `username: ${this.state.username}, password: ${this.state.password}`);
 
     fetch('/users', {
@@ -32,8 +33,9 @@ class SignUpPage extends Component {
       })
     })
     .then(response => {
-      console.log('inside formsubmit on signup page')
-      window.location.href = response.url
+      console.log('inside formsubmit on signup page', response.url)
+      this.props.setCurrentUser("Joe") // fix this to send actual username
+      window.location.href = '../home';
     })
   }
 

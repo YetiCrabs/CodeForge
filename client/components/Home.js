@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import FeedBubble from './FeedBubble.js'
+import NavBar from './NavBar.js';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-      this.state = {
+    this.state = {
       activeUsers: [],
       inactiveUsers: [],
+      
     };
+
   }
+
+
 
   componentDidMount() {
     console.log('Home page did mount')
-    
+
     fetch('/users')
       .then(response => response.json())
       .then(users => {
-        this.setState({...this.state, activeUsers: users.filter(user => user.status), inactiveUsers: users.filter(user => !user.status)});
+        this.setState({ ...this.state, activeUsers: users.filter(user => user.status), inactiveUsers: users.filter(user => !user.status) });
         console.log(this.state);
       })
   }
@@ -24,7 +29,7 @@ class Home extends Component {
   render() {
     const bubbles = [];
     if (this.state.activeUsers.length) {
-      for(let i = 0; i < this.state.activeUsers.length; i++) {
+      for (let i = 0; i < this.state.activeUsers.length; i++) {
         bubbles.push(
           <FeedBubble
             key={`user${i}`}
@@ -35,8 +40,17 @@ class Home extends Component {
     }
 
     return (
-      <div id="feed">
-        { bubbles }
+      <div>
+        <NavBar
+          text={"hello world!"}
+          currentUserStatus={this.props.currentUserStatus}
+          currentUserStatusMessage={this.props.currentUserStatus}
+          ToggleButtonFunc={this.props.ToggleButtonFunc}
+          currentUsername={this.props.currentUsername}
+        />
+        <div id="feed">
+          {bubbles}
+        </div>
       </div>
     )
   }

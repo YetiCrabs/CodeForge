@@ -9,9 +9,10 @@ router.get('/', projectController.getUsers, (req, res) => {
 });
 
 router.post('/', projectController.addUser, (req, res) => {
-  res.status(200).json(res.locals.newUser);
   console.log('hit post users route');
-  // res.redirect('/home');
+  console.log('addUsers res.locals\n', res.locals);
+  res.redirect(200, '/home');
+  // res.status(200).json(res.locals.newUser);
 });
 
 router.get('/:id', projectController.getUser, (req, res) => res.status(200).json(res.locals.user));
