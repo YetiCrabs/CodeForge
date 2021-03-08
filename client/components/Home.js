@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FeedBubble from './FeedBubble.js'
+import OfflineBubble from './OfflineBubble.js'
 import NavBar from './NavBar.js';
 
 class Home extends Component {
@@ -8,7 +9,7 @@ class Home extends Component {
     this.state = {
       activeUsers: [],
       inactiveUsers: [],
-      
+
     };
 
   }
@@ -39,6 +40,18 @@ class Home extends Component {
       }
     }
 
+    const offline = [];
+    if (this.state.inactiveUsers.length) {
+      for (let i = 0; i < this.state.inactiveUsers.length; i++) {
+        offline.push(
+          <OfflineBubble
+            key={`user${i}`}
+            user={this.state.inactiveUsers[i].username}
+            status={this.state.inactiveUsers[i].status_message}
+          />);
+      }
+    }
+
     return (
       <div>
         <NavBar
@@ -48,8 +61,13 @@ class Home extends Component {
           ToggleButtonFunc={this.props.ToggleButtonFunc}
           currentUsername={this.props.currentUsername}
         />
-        <div id="feed">
-          {bubbles}
+        <div class="homepage">
+          <div id="feed">
+            {bubbles}
+          </div>
+          <div id="offline">
+            {offline}
+          </div>
         </div>
       </div>
     )
