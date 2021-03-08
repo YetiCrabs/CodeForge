@@ -7,7 +7,30 @@ import Home from './Home.js'
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentUsername: 'Username has not been set yet...',
+      currentUserStatus: "inactive",
+      currentUserStatusMessage: "",
+    };
+
+    this.ToggleButtonFunc = this.ToggleButtonFunc.bind(this);
+    this.setCurrentUser = this.setCurrentUser.bind(this);
+
+  }
+
+  ToggleButtonFunc() {
+    let status;
+    if (this.state.currentUserStatus === "inactive") {
+      status = "active";
+    } else {
+      status = "inactive";
+    }
+    this.setState({ ...this.state, currentUserStatus: status });
+  }
+
+  setCurrentUser(input) {
+    alert(input);
+    this.setState({ ...this.state, currentUsername: input });
   }
 
   componentDidMount() {
@@ -17,17 +40,23 @@ export default class App extends Component {
   render() {
     return (
       <div>
+      <div>Username: {this.state.currentUsername}</div>
         <Switch>
           <Route path="/signup">
-            <SignUpPage />
+            <SignUpPage setCurrentUser={this.setCurrentUser} />
           </Route>
 
           <Route path="/home">
-            <Home />
+            <Home
+              ToggleButtonFunc={this.ToggleButtonFunc}
+              currentUserStatus={this.state.currentUserStatus}
+              currentUserStatusMessage={this.state.currentUserStatusMessage}
+              currentUsername={this.state.currentUsername}
+            />
           </Route>
 
           <Route path="/">
-            <LandingPage />
+            <LandingPage setCurrentUser={this.setCurrentUser} />
           </Route>
         </Switch>
       </div>

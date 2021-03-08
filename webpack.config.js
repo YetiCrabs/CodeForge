@@ -6,6 +6,8 @@ module.exports = {
     publicPath: '/build/',
     proxy: {
       '/': 'http://localhost:3000',
+      '/signup': 'http://localhost:3000',
+      '/users': 'http://localhost:3000/users',
     },
   },
   output: {
