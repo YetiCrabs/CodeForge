@@ -19,6 +19,6 @@ router.get('/:id', projectController.getUser, (req, res) => res.status(200).json
 
 router.patch('/:id', projectController.getUser, projectController.updateUser, (req, res) => res.status(200).json({}));
 
-router.delete('/:id', projectController.deleteUser, (req, res) => res.status(200).json(res.locals.deletedUser));
+router.delete('/:id', projectController.deleteUser, (req, res) => res.redirect('/'));
 
 module.exports = router;

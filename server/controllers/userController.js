@@ -8,21 +8,28 @@ userController.verifyUser = (req, res, next) => {
     username,
     password,
   ];
+  console.log('userValues', userValues);
 
   const query = 'SELECT * FROM public.user WHERE username = $1 AND password = $2';
 
   db.query(query, userValues, (err, result) => {
-    if(err) return next({
-      log: 'userController.verifyUser failed',
-      message: {
-        err: 'this user does not exist'
-      }
-    })
-    
+    if (err) {
+      return next({
+        log: 'userController.verifyUser failed',
+        message: {
+          err: 'this user does not exist',
+        },
+      });
+    }
+    console.log(result);
+    if (result.rows.length === 0) { 
+      return next({
+      log: 'no user',
+    });
+    }
     res.locals.userId = result.rows[0]._id;
-    res.body = res.locals.userId;
     return next();
-  })
-}
+  });
+};
 
 module.exports = userController;

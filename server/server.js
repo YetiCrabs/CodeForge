@@ -1,15 +1,23 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+const userRouter = require('./routes/users');
+const userController = require('./controllers/userController');
+const cookieController = require('./controllers/cookieController.js');
+const sessionController = require('./controllers/sessionController');
 
 const app = express();
 const PORT = 3000;
-const userRouter = require('./routes/users');
-const userController = require('./controllers/userController');
-const cookieController = require('./controllers/cookieController.js')
-
 /**
  * handle parsing request body
  */
+
+const mongoURI = 'mongodb+srv://brian:codesmith1@cluster0.im9en.mongodb.net/scratch?retryWrites=true&w=majority';
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.once('open', () => {
+  console.log('Connected to Database');
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -30,15 +38,16 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-app.post('/login', 
-  userController.verifyUser, 
+app.post('/login',
+  userController.verifyUser,
   cookieController.setSSIDCookie,
+  sessionController.startSession,
   (req, res) => {
     console.log('hit login post route');
     // console.log(res.locals.userId)
     // res.set('Content-Type', 'text/html; charset=UTF-8');
     res.redirect('/home');
-});
+  });
 
 app.get('/', (req, res) => res.status(200).sendFile(path.join(__dirname, '../index.html')));
 
