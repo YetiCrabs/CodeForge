@@ -10,7 +10,7 @@ projectController.getUsers = (req, res, next) => {
       res.locals.users = response.rows;
       return next();
     }).catch((err) => {
-      console.log('THIS IS MY ERROR', err); r;
+      console.log('THIS IS MY ERROR', err);
       return next({
         log: 'userController get users failed',
         message: { err: 'getting users from database failed' },
@@ -36,7 +36,8 @@ projectController.addUser = (req, res, next) => {
         message: { err: 'failed to add user to database' },
       });
     }
-    res.locals.newUser = result;
+    console.log('result of addUser query\n', result.rows);
+    res.locals.newUser = result.rows[0];
     return next();
   });
 };

@@ -18,9 +18,10 @@ class SignUpPage extends Component {
   }
 
   formSubmit(event) {
+    event.preventDefault();
     console.log('Form submitted\n', `username: ${this.state.username}, password: ${this.state.password}`);
 
-    fetch('/signup', {
+    fetch('/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -30,6 +31,11 @@ class SignUpPage extends Component {
         username: this.state.username,
         password: this.state.password,
       })
+    })
+    .then(response => {
+      console.log('inside formsubmit on signup page', response.url)
+      this.props.setCurrentUser("Joe") // fix this to send actual username
+      window.location.href = '../home';
     })
   }
 
