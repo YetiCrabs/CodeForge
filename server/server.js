@@ -12,7 +12,7 @@ const PORT = 3000;
  */
 
 //  Lines 15-20 connect to the mongo database which will be used to store session information.
-const mongoURI = 'mongodb+srv://brian:codesmith1@cluster0.im9en.mongodb.net/scratch?retryWrites=true&w=majority';
+const mongoURI = 'insert db uri here';
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
   console.log('Connected to Database');
