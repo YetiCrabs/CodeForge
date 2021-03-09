@@ -2,7 +2,7 @@
 
 body {
   margin: 0px;
-  
+
 }
 
 #root {
@@ -29,7 +29,7 @@ body {
 }
 
 .btn2 {
-  
+
   background:we;
   width:225px;
   padding-top:5px;
@@ -48,7 +48,7 @@ body {
 }
 
 .btn:hover{
-  background:#2ab968; 
+  background:#2ab968;
   cursor: pointer;
 }
 
@@ -101,7 +101,7 @@ body {
     border: solid 1px;
     padding: 0px 15px;
     outline: none;
-    
+
 }
 
 .inputField {
@@ -156,65 +156,3 @@ body {
     font-size: 16px;
     width: 40%;
 }
-
-// toggle switch stuff
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 51px;
-    height: 26px;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(126, 126, 126);
-    -webkit-transition: .6s;
-    transition: .6s;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 3px;
-    bottom: 2px;
-    background-color: rgb(214, 214, 214);
-    -webkit-transition: .6s;
-    transition: .6s;
-  }
-
-  input:checked + .slider {
-    background-color: rgb(66, 133, 81);
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #707070;
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(23px);
-    -ms-transform: translateX(23px);
-    transform: translateX(23px);
-  }
-
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 26px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
-  }

@@ -9,13 +9,9 @@ class NavBar extends Component {
   }
 
   statusSubmit(event) {
-    // console.log('before changing status', this.props.currentUserStatus)
     event.preventDefault();
-    // console.log('Status submitted\n', `message: ${event.target[0].value}`, `username: ${localStorage.username}`, `user status: ${this.props.currentUserStatus}`);
 
-    console.log(`status message will be set to ${event.target[0].value}`);
-
-    document.getElementById("navbar").classList.toggle("navBarActive"); //changing styling on button click
+    document.getElementById("navbar").classList.toggle("navBarActive"); //changing styling after status change
 
     fetch(`/users/${document.cookie.split('=')[1]}`, {
       method: 'PATCH',
@@ -28,15 +24,11 @@ class NavBar extends Component {
         status: this.props.currentUserStatus
       })
     })
-
-
   }
 
   deleteUser(event) {
-    // console.log('before changing status', this.props.currentUserStatus)
     event.preventDefault();
-    // console.log('Status submitted\n', `message: ${event.target[0].value}`, `username: ${localStorage.username}`, `user status: ${this.props.currentUserStatus}`);
-    // console.log(`status message will be set to ${event.target[0].value}`);
+
     fetch(`/users/${document.cookie.split('=')[1]}`, {
       method: 'DELETE',
       headers: {
@@ -49,7 +41,6 @@ class NavBar extends Component {
       // })
     })
     .then(response => {
-      // alert('try to pass in Joe');
       window.location.href = response.url;
     })
 
@@ -77,20 +68,12 @@ class NavBar extends Component {
 
   render() {
     return (
-
       <div id="navbar" className="navBarInactive">
         <div className="navBar">
           <form onSubmit={this.statusSubmit}>
             <input id="input" name="status" type="text" placeholder="What are you working on?"/>
             <button className='btn2' onClick={this.props.ToggleButtonFunc}> Go Active / Inactive</button>
-            {/* <label className="switch">
-              <input type="checkbox" onChange={this.statusSubmit}/>
-              <span className="slider round"></span>
-            </label> */}
           </form>
-          {/* <div>
-            This user is {this.props.currentUserStatus ? "active" : "inactive"}
-          </div> */}
 
         </div>
         <form onSubmit={this.deleteUser}>

@@ -9,14 +9,8 @@ class Home extends Component {
     this.state = {
       activeUsers: [],
       inactiveUsers: [],
-
     };
-
-    this.handleClick = this.handleClick.bind(this);
-    // this.changeStyle = this.changeStyle.bind(this);
   }
-
-
 
   componentDidMount() {
     console.log('Home page did mount')
@@ -29,12 +23,8 @@ class Home extends Component {
       })
   }
 
-  handleClick() {
-    alert('username to joe button clicked');
-    this.props.setCurrentUser("Joe");
-  }
-
   render() {
+    // ARRAY TO RENDER ONLINE USERS
     const bubbles = [];
     if (this.state.activeUsers.length) {
       for (let i = 0; i < this.state.activeUsers.length; i++) {
@@ -44,10 +34,10 @@ class Home extends Component {
             user={this.state.activeUsers[i].username}
             status={this.state.activeUsers[i].status_message}
           />);
-      } 
+      }
     }
 
-
+    // ARRAY TO RENDER OFFLINE USERS
     const offline = [];
     if (this.state.inactiveUsers.length) {
       for (let i = 0; i < this.state.inactiveUsers.length; i++) {
@@ -72,11 +62,7 @@ class Home extends Component {
 
     return (
       <div>
-
-      {/* <div>Username from local storage: {localStorage.username}</div> */}
-
         <NavBar
-          text={"hello world!"}
           currentUserStatus={this.props.currentUserStatus}
           currentUserStatusMessage={this.props.currentUserStatus}
           ToggleButtonFunc={this.props.ToggleButtonFunc}
