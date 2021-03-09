@@ -6,15 +6,8 @@ class LandingPage extends Component {
     super(props);
     this.state = {}
 
-    // this.formChange = this.formChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
   }
-
-  // formChange(event) {
-  //   const target = event.target;
-  //   this.setState({ [target.name]: target.value });
-  //   console.log('Form submitted\n', `username: ${this.state.username}, password: ${this.state.password}`);
-  // }
 
   formSubmit(event) {
     event.preventDefault();
@@ -45,19 +38,15 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.formSubmit}>
-          <input name="username" type="text" value={this.state.username} placeholder="Username" />
-          <input name="password" type="password" value={this.state.password} placeholder="Password" />
-          <input type="submit" value="Log In" />
+      <div id="loginDiv">
+        <form id="loginForm" onSubmit={this.formSubmit}>
+          <input className='inputField' name="username" type="text" value={this.state.username} placeholder="Username" />
+          <input className='inputField' name="password" type="password" value={this.state.password} placeholder="Password" />
+          <input className='btn' type="submit" value="Log In" />
         </form>
         <Link to="/signup">
-          <button>Sign Up</button>
+          <button className='btn'>Sign Up</button>
         </Link>
-        <Link to="/home">
-          <button>Home</button>
-        </Link>
-        <button onClick={this.changeStyle}>Change Colors</button>
       </div>
     )
   }
