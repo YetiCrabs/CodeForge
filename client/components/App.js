@@ -29,10 +29,7 @@ export default class App extends Component {
   }
 
   setCurrentUser(input) {
-    // alert(this.state.currentUsername);
-    // alert(input);
     this.setState({ ...this.state, currentUsername: input });
-    // alert(this.state.currentUsername);
     localStorage.setItem('username', input);
   }
 
@@ -43,7 +40,6 @@ export default class App extends Component {
   render() {
     return (
       <div id="outerDiv">
-      {/* <div>Username: {this.state.currentUsername}</div> */}
         <Switch>
           <Route path="/signup">
             <SignUpPage setCurrentUser={this.setCurrentUser} />

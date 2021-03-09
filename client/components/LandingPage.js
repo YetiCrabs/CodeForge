@@ -13,7 +13,7 @@ class LandingPage extends Component {
     event.preventDefault();
     console.log('Form submitted\n', `username: ${event.target[0].value}, password: ${event.target[1].value}`);
 
-    fetch('/login', { // previously fetch('/login'
+    fetch('/login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -25,15 +25,10 @@ class LandingPage extends Component {
       })
     })
     .then(response => {
-      // alert('try to pass in Joe');
       this.props.setCurrentUser("Joe"); // fix this to pull actual username
       window.location.href = response.url;
     })
-    
-  }
 
-  changeStyle() {
-    document.getElementById("root").classList.toggle("stylingV2Test");
   }
 
   render() {
@@ -50,8 +45,6 @@ class LandingPage extends Component {
       </div>
     )
   }
-
-
 }
 
 export default LandingPage;
