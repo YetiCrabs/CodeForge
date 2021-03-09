@@ -41,11 +41,11 @@ class SignUpPage extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.formSubmit}>
-          <input name="username" type="text" value={this.state.username} onChange={this.formChange} placeholder="Username" />
-          <input name="password" type="password" value={this.state.password} onChange={this.formChange} placeholder="Password" />
-          <input type="submit" value="Sign Up" />
+      <div id="signUpDiv">
+        <form id="signUpForm" onSubmit={this.formSubmit}>
+          <input className='inputField' name="username" type="text" value={this.state.username} onChange={this.formChange} placeholder="Username" />
+          <input className='inputField' name="password" type="password" value={this.state.password} onChange={this.formChange} placeholder="Password" />
+          <input className='btn' type="submit" value="Sign Up" />
         </form>
       </div>
     )

@@ -78,11 +78,11 @@ class NavBar extends Component {
   render() {
     return (
 
-      <div id="navbar" className="navBarInactive navBarActive">
+      <div id="navbar" className="navBarInactive">
         <div className="navBar">
           <form onSubmit={this.statusSubmit}>
             <input id="input" name="status" type="text" placeholder="What are you working on?"/>
-            <button onClick={this.props.ToggleButtonFunc}>Toggle</button>
+            <button className='btn2' onClick={this.props.ToggleButtonFunc}> Go Active / Inactive</button>
             {/* <label className="switch">
               <input type="checkbox" onChange={this.statusSubmit}/>
               <span className="slider round"></span>
@@ -94,7 +94,7 @@ class NavBar extends Component {
 
         </div>
         <form onSubmit={this.deleteUser}>
-          <input name="delete" type="submit" value="Delete my Account" />
+          <input className="btn2" name="delete" type="submit" value="Delete My Account" />
         </form>
       </div>
     )

@@ -42,7 +42,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id="outerDiv">
       {/* <div>Username: {this.state.currentUsername}</div> */}
         <Switch>
           <Route path="/signup">
